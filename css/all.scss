@@ -1,0 +1,145 @@
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*,
+*::before,
+*::after{
+   box-sizing: border-box;
+   font-family: "Microsoft JhengHei",sans-serif !important;
+}
+
+//variable
+$primary:#6C00FF;
+$secondary:#00000066;
+$gray:#E8E8E8;
+$white:#FFFFFF;
+$btn:#062145;
+$panel:#041936;
+$body:#E8E8E8;
+$info:#00C4FF;
+$hover:	#0072E3;
+body{
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: $body;
+}
+.calculator{
+    display: flex;
+    background-color: $panel;
+    height: 430px;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow:0 20px 40px $secondary;
+    flex-direction: column;
+    .calculator-view{
+        width: 100%;
+        background-color: $panel;
+        border-radius: 20px;
+        text-align: right;
+        word-break: break-all;
+        min-height: 149px;
+        box-sizing: border-box;
+        .calculator-store{
+            height: 29px;
+            font-size: 16px;
+            color: $info;
+            padding-right: 20px;
+            padding-top: 10px;
+        }
+        .calculator-show{
+            font-size: 56px;
+            height: 86px;
+            color: $white;
+            padding-right: 10px;
+            padding-top: 10px;
+        }
+    }
+    .calculator-keyboard{
+        background-color: $btn;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 16px 8px;
+        justify-content: space-around;
+        border-radius: 20px;
+        .btn{
+            margin: 2px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            width: 72px;
+            height: 54px;
+            border-radius: 16px;
+            padding: 1px 6px;
+            background-color: transparent;
+            border: transparent;
+            font-weight: bold;
+            font-size: 24px;
+            outline: none;
+        }
+        .btn:hover{
+            background-color: $hover;
+        }
+        .btn-operator{
+            margin: 2px 0;
+            background-color: $panel;
+        }
+        .btn-reset{
+            margin: 2px 0;
+            color: $info;
+        }
+        .btn-ans{
+            margin: 2px 0;
+            color: $info;
+            width: 155px;
+            justify-content: flex-end;
+            padding-right: 20px;
+            background: linear-gradient(90deg,$info,$primary);
+            &:hover{
+                background: linear-gradient(90deg,$primary,$info);
+            }
+        }
+    }
+}
