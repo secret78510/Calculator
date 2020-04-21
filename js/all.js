@@ -115,9 +115,11 @@ function updateOperation(str){
     store.textContent = addComma(arr.join(''));
 }
 //更新畫面
-function updateView(){
+function updateShow(){
     store.textContent = addComma(arr.join(''));
-    
+}
+function updateStore(){
+    show.textContent =addComma(number)
 }
 function addComma(num) {
     var parts = num.toString().split('.');
