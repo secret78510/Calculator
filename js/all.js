@@ -38,29 +38,29 @@ function enterKeyboard(e) {
 }
 //顯示
 function showNumber(str){
-    if(number == '0'){
-        number = '';
+    if(number == '0'){//避免出現012
+        number = ''; //如果是0 就清空再重新加入
         number +=str
     }else{
         number +=str
     }
-    show.textContent = addComma(number);
+    updateShow(number);
 }
 
 //刪除
 function del(){
-    if(number.length<=1){
+    if(number.length<=1){ //避免開頭0被消除 變成空白
         number = '0'
-    }else{
-        number = number.slice(0 ,number.length -1);
+    }else{//刪除最後一個數字
+        number = number.slice(0,number.length -1);
     }
-    if(arr.length <= 1){
+    if(arr.length <= 1){ //避免store開頭的0被刪除
         arr=['0']
     }else{
-        arr =arr.splice(-1, 1);
+        arr =arr.splice(0,arr.length -1);//刪除陣列最後一個字
     }
-    show.textContent = number;
-    store.textContent =arr.join('');
+    updateShow(number);
+    updateStore(arr);
 }
 //AC 歸零
 function init(){
@@ -75,7 +75,7 @@ function evalNumber(){
     let calc= evalFn(arr.join(''));//避免浮數點
     let str= parseFloat(calc.toPrecision(12));
     let answer= parseFloat(str);
-    show.textContent = addComma(answer);//改用別的參數 避免按下=又將參數推數
+    updateShow(answer)//改用別的參數 避免按下=又將參數推數
 }
 //替代eval
 function evalFn(obj){
@@ -84,20 +84,20 @@ function evalFn(obj){
 }
 //儲存store 
 function storeNumber(){
-    if(number !=''){
+    if(number !=''){ //避免空值加入陣列
         arr.push(number);
         number = '';
     }
-    show.textContent =addComma(number);
+    updateShow(number)
 }
 //增加小數點
 function addPoint(){
     if(number ==''){//避免.0
         number ='0.'
-    }else if(!number.includes('.')){//避免0.....重複
+    }else if(!number.includes('.')){//沒有.就加入 有.就不加入 避免0...
         number+='.'
     }
-    show.textContent =addComma(number);
+    updateShow(number)
 }
 //運算符號更新
 function updateOperation(str){
@@ -112,13 +112,14 @@ function updateOperation(str){
     }else{
         arr.push(str)
     }
-    store.textContent = addComma(arr.join(''));
+    updateStore(arr)
 }
-//更新畫面
-function updateShow(){
-    store.textContent = addComma(arr.join(''));
-}
+//更新畫面 store
 function updateStore(){
+    store.textContent = addComma(arr.join(''));
+}
+//更新畫面 show
+function updateShow(number){
     show.textContent =addComma(number)
 }
 function addComma(num) {
