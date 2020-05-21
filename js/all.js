@@ -73,7 +73,7 @@ function init(){
 function evalNumber(){
     storeNumber(); //將show送入陣列
     let calc= evalFn(arr.join(''));//避免浮數點
-    let str= parseFloat(calc.toPrecision(12));
+    let str= parseFloat(calc.toPrecision(15));
     let answer= parseFloat(str);
     updateShow(answer)//改用別的參數 避免按下=又將參數推數
 }
