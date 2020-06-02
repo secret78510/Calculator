@@ -123,7 +123,5 @@ function updateShow(number){
     show.textContent =addComma(number)
 }
 function addComma(num) {
-    var parts = num.toString().split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return parts.join('.');
+    return num.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
